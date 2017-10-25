@@ -51,7 +51,7 @@ const gulp = require('gulp'),
                        pug:{
                        	     pretty:true,
                        	     locals :{
-                       	     	titulo: "Anier",
+                       	     	titulo: "Anierr",
                        	     	files:files
                        	     }
                        }
