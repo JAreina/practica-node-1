@@ -4,5 +4,11 @@ html(lang="es")
 		meta(charset="utf-8")
 		meta(name="viewport", content="width=device-width,initial-scale=1")
 		title=titulo
+		each css in files.CSS
+			link(rel="stylesheet", href=`../${css}`)
 	body
 		h1=titulo
+		a(href="http://jareina.github.io/jareina", target="_blank") Jareina
+		p.item Poems
+		each js in files.JS
+			script(src=`..${js}`)

@@ -1,14 +1,25 @@
+
 {
-  "name": "aprendiendo-npm",
+  "name": "PROYECTO-FRONT",
   "version": "1.0.0",
-  "description": "aprendiendo npm",
-  "main": "package.json",
+  "description": "PROYECTO-FRONT",
+  "main": "gulpfile.js",
   "scripts": {
+
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server"
+    "start": "http-server",
+    "pug": "gulp pug",
+    "sass": "gulp sass",
+    "es6": "gulp es6",
+  "serve": "browser-sync start --server --startPath \"dist\" --files \"dist/**/*.+(html|css|js)\"",
+    "build:dev": "npm run pug && npm run sass && npm run es6",
+    "watch:pug": "onchange \"./src/pug/**\" -- npm run pug",
+    "watch:sass": "onchange \"./src/scss/**\" -- npm run sass",
+    "watch:es6": "onchange \"./src/es6/**\" -- npm run es6",
+    "watch:dev": "parallelshell \"npm run serve\" \"npm run watch:pug\" \"npm run watch:sass\" \"npm run watch:es6\""
   },
   "author": "JAreina <correo@correo.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "animate.css": "^3.5.2",
     "font-awesome": "^4.7.0",

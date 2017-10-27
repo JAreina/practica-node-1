@@ -49,12 +49,14 @@ const gulp = require('gulp'),
 	},//OPCIONES de plugins
 	opts = {
                        pug:{
-                       	     pretty:true,
+                       	     pretty:true, // a false minifica el index
                        	     locals :{
                        	     	titulo: "Anier",
                        	     	files:files
                        	     }
-                       }
+                       },
+                       sass: {outputStyle: "compressed"},
+                       es6:{presets:['es2015']}
 	};
 
 // tareas  EJECUTAR TAREAS en terminal : $ gulp pug
@@ -63,4 +65,20 @@ gulp.task('pug', () =>{
 	    .src( `${dir.src}/pug/*.pug` )
 	      .pipe(pug(opts.pug))
 	      .pipe(gulp.dest(dir.dist))
-})
+});
+
+// tareas  EJECUTAR TAREAS en terminal : $ gulp sass
+gulp.task('sass', () =>{
+	gulp
+	    .src( `${dir.src}/scss/*.scss` )
+	      .pipe(sass(opts.sass))
+	      .pipe(gulp.dest(`${dir.dist}/css`))
+});
+
+// tareas  EJECUTAR TAREAS en terminal : $ gulp  es6
+gulp.task('es6', () =>{
+	gulp
+	    .src( `${dir.src}/es6/*.js` )
+	      .pipe(babel(opts.es6))
+	      .pipe(gulp.dest(`${dir.dist}/js`))
+});
