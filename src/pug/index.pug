@@ -1,14 +1,93 @@
+
+//- mixin funciones
+mixin menu(url, nombre)
+	li #[a(href=`${url}`) #{nombre}]
+
+mixin foto(nombre,extension)
+	picture
+		source(srcset=`img/webp/${nombre}.webp`,type="image/webp")
+	img(src=`img/${nombre}.${extension}`)
+
+mixin youtube(id)
+	iframe.youtube(src=`https://www.youtube.com/embed/${id}`, frameborder="0", allowfullscreen)
 doctype html
 html(lang="es")
 	head
 		meta(charset="utf-8")
 		meta(name="viewport", content="width=device-width,initial-scale=1")
 		title=titulo
+		// build:css css/estilos.min.css
 		each css in files.CSS
 			link(rel="stylesheet", href=`../${css}`)
+		// endbuild
 	body
-		h1=titulo
-		a(href="http://jareina.github.io/jareina", target="_blank") Jareina
-		p.item Poems
+		header.container-full.header.center
+
+			nav.container.nav
+				ul.item
+
+
+					+menu('#item1','INICIO')
+					+menu('#item2','DOS')
+					+menu('#item3','TRES')
+					+menu('#item4','CUATRO')
+					+menu('#item5','CINCO')
+
+
+		section#item1.container.section
+			h1.title.center.animated.wow.zoomIn SECCIÓN UNO
+			article.item.ph12.lg8.mauto.animated.wow.fadeInRightBig
+				p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore saepe tempora nemo quo architecto, debitis vel et suscipit laboriosam. Sint ut sapiente odit autem doloremque aperiam, aspernatur sit veritatis #[b placeat].
+				div
+								+foto('foto-l-10', 'png')
+		section#item2.container.section
+			h1.title.center.animated.wow.zoomIn SECCIÓN DOS
+			article.item.ph12.lg8.mauto.animated.wow.fadeInRightBig
+				p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore saepe tempora nemo quo architecto, debitis vel et suscipit laboriosam. Sint ut sapiente odit autem doloremque aperiam, aspernatur sit veritatis #[b placeat].
+				div
+								+foto('foto-l-1', 'png')
+		section#item3.container.section
+			h2.title.center.animated.wow.zoomIn SECCIÓN TRES
+			article.item.ph12.lg8.mauto.animated.wow.fadeInLeftBig
+				p Los #[a(href="https://www.worldmarathonmajors.com/", target="_blank") ] Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, alias. Voluptatum ipsum libero tempora debitis iure iste corporis officia, minus perferendis voluptates, facere voluptate suscipit sit quisquam aut placeat in.
+				div.owl-carousel
+							div
+								+foto('foto-l-1', 'png')
+							div
+								+foto('foto-l-2', 'png')
+							div
+								+foto('foto-l-3', 'png')
+							div
+								+foto('foto-l-4', 'png')
+							div
+								+foto('foto-l-5', 'png')
+							div
+								+foto('foto-l-6', 'png')
+							div
+								+foto('foto-l-7', 'png')
+				div
+								+foto('foto-l-5', 'png')
+		section#item4.container.section
+			h2.title.center.animated.wow.zoomIn #[i.fa.fa-trophy] Top Ten #[i.fa.fa-trophy]
+			article.item.ph12.lg8.mauto.animated.wow.fadeInRightBig
+				h3.center #[i.fa.fa-female]
+				+foto('foto-l-8', 'png')
+				h3.center #[i.fa.fa-male]
+				+foto('foto-l-9', 'png')
+				h3.center #[i.fa.fa-bolt]  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore sequi hic nihil illum totam inventore dicta molestiae asperiores nesciunt facilis. Repellendus totam maxime obcaecati ex illum praesentium corrupti corporis voluptatibus! #[i.fa.fa-bolt]
+				+youtube('tjyIqIOivVM')
+		section#item5.container.section
+			h2.title.center.animated.wow.zoomIn Inspírate
+			article.item.ph12.lg8.mauto.animated.wow.fadeInLeftBig
+				h3.center Esos locos que corren
+				+youtube('tjyIqIOivVM')
+				h3.center A World Transformed
+				+youtube('tjyIqIOivVM')
+				h3.center Maratón CDMX
+				+youtube('tjyIqIOivVM')
+				h3.center Héroe por un día
+				+youtube('tjyIqIOivVM')
+		// build:js js/codigos.min.js
 		each js in files.JS
-			script(src=`..${js}`)
+			script(src=`../${js}`)
+		// endbuild
